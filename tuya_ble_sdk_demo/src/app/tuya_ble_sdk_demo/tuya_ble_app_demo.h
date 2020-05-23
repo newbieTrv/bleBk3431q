@@ -69,7 +69,7 @@ typedef struct
     {
         uint8_t dp_data[256];
     };
-} lock_dp_t;
+} demo_dp_t;
 
 typedef struct
 {
@@ -81,8 +81,8 @@ typedef struct
 /*********************************************************************
  * EXTERNAL VARIABLE
  */
-extern lock_dp_t g_cmd;
-extern lock_dp_t g_rsp;
+extern demo_dp_t g_demo_cmd;
+extern demo_dp_t g_demo_rsp;
 
 /*********************************************************************
  * EXTERNAL FUNCTION

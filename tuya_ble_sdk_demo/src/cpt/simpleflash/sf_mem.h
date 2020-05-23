@@ -1,20 +1,20 @@
 /**
 ****************************************************************************
-* @file      lock_common.h
-* @brief     lock_common
+* @file      sf_mem.h
+* @brief     sf_mem
 * @author    suding
 * @version   V1.0.0
-* @date      2019-09-11
+* @date      2020-04
 * @note
 ******************************************************************************
 * @attention
 *
-* <h2><center>&copy; COPYRIGHT 2019 Tuya </center></h2>
+* <h2><center>&copy; COPYRIGHT 2020 Tuya </center></h2>
 */
 
 
-#ifndef __LOCK_COMMON_H__
-#define __LOCK_COMMON_H__
+#ifndef __SF_MEM_H__
+#define __SF_MEM_H__
 
 #ifdef __cplusplus
 extern "C"
@@ -24,11 +24,12 @@ extern "C"
 /*********************************************************************
  * INCLUDES
  */
-#include "app_common.h"
+#include "sf_port.h"
 
 /*********************************************************************
  * CONSTANTS
  */
+#define MEM_SIZE ((1024*2)/sizeof(uint32_t))
 
 /*********************************************************************
  * STRUCT
@@ -41,15 +42,14 @@ extern "C"
 /*********************************************************************
  * EXTERNAL FUNCTIONS
  */
-void lock_common_init(void);
-uint32_t lock_open_with_bt(void);
-uint32_t lock_open_with_nopwd_remote(void);
-uint32_t lock_remote_anti_lock(bool anti_lock);
-void lock_factory_handler(bool is_delete_app_test_data);
+bool  sd_mem_init( void );
+void* sd_malloc( u32 size );
+bool  sd_free( void* mem );
+
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //__LOCK_COMMON_H__
+#endif //__SF_MEM_H__

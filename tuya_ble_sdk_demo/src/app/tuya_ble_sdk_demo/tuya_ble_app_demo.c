@@ -46,8 +46,8 @@ static tuya_ble_device_param_t tuya_ble_device_param =
 /*********************************************************************
  * VARIABLE
  */
-lock_dp_t g_cmd;
-lock_dp_t g_rsp;
+demo_dp_t g_demo_cmd;
+demo_dp_t g_demo_rsp;
 
 /*********************************************************************
  * LOCAL FUNCTION
@@ -91,13 +91,13 @@ static void tuya_ble_sdk_callback(tuya_ble_cb_evt_param_t* event)
         case TUYA_BLE_CB_EVT_DP_WRITE: {
             if(event->dp_write_data.p_data[2] == (event->dp_write_data.data_len - 3))
             {
-                memcpy(&g_cmd, event->dp_write_data.p_data, event->dp_write_data.data_len);
-                memcpy(&g_rsp, event->dp_write_data.p_data, event->dp_write_data.data_len);
+                memcpy(&g_demo_cmd, event->dp_write_data.p_data, event->dp_write_data.data_len);
+                memcpy(&g_demo_rsp, event->dp_write_data.p_data, event->dp_write_data.data_len);
                 
-                TUYA_APP_LOG_HEXDUMP_DEBUG("dp_cmd", (void*)&g_cmd, g_cmd.dp_data_len+3);
+                TUYA_APP_LOG_HEXDUMP_DEBUG("dp_cmd", (void*)&g_demo_cmd, g_demo_cmd.dp_data_len+3);
                 
-                tuya_ble_dp_data_report((void*)&g_rsp, g_rsp.dp_data_len+3);
-                TUYA_APP_LOG_HEXDUMP_DEBUG("dp_rsp", (void*)&g_rsp, g_rsp.dp_data_len+3);
+                tuya_ble_dp_data_report((void*)&g_demo_rsp, g_demo_rsp.dp_data_len+3);
+                TUYA_APP_LOG_HEXDUMP_DEBUG("dp_rsp", (void*)&g_demo_rsp, g_demo_rsp.dp_data_len+3);
             }
         } break;
         

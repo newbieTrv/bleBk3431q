@@ -35,7 +35,7 @@ static uint32_t app_ota_file_info_handler(uint8_t* cmd, uint16_t cmd_size, tuya_
 static uint32_t app_ota_file_offset_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
 static uint32_t app_ota_data_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
 static uint32_t app_ota_end_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
-static uint32_t app_ota_timer_creat_and_start(void);
+static void app_ota_timer_creat_and_start(void);
 
 /*********************************************************************
  * VARIABLES
@@ -123,11 +123,6 @@ FN:
 */
 static uint32_t app_ota_exit(void)
 {
-    if(!s_ota_success)
-    {
-//        memset(&s_dfu_settings, 0, sizeof(nrf_dfu_settings_t));
-    }
-    
     app_ota_timer_creat_and_start();
     s_ota_state = TUYA_BLE_OTA_REQ;
     return SUBLE_SUCCESS;
@@ -544,10 +539,11 @@ static void reset_with_disconn_outtime_cb(tuya_ble_timer_t timer)
 }
 
 
-static uint32_t app_ota_timer_creat_and_start(void)
+static void app_ota_timer_creat_and_start(void)
 {
     tuya_ble_timer_create(&app_ota_timer, 2000, TUYA_BLE_TIMER_SINGLE_SHOT, reset_with_disconn_outtime_cb);
     tuya_ble_timer_start(app_ota_timer);
+    
 }
 
 
