@@ -1,7 +1,7 @@
 /**
 ****************************************************************************
-* @file      suble_uart.h
-* @brief     suble_uart
+* @file      suble_template.h
+* @brief     suble_template
 * @author    suding
 * @version   V1.0.0
 * @date      2020-04
@@ -13,8 +13,8 @@
 */
 
 
-#ifndef __SUBLE_UART_H__
-#define __SUBLE_UART_H__
+#ifndef __SUBLE_TEMPLATE_H__
+#define __SUBLE_TEMPLATE_H__
 
 #ifdef __cplusplus
 extern "C"
@@ -24,7 +24,6 @@ extern "C"
 /*********************************************************************
  * INCLUDE
  */
-#include "suble_common.h"
 
 /*********************************************************************
  * CONSTANT
@@ -41,14 +40,10 @@ extern "C"
 /*********************************************************************
  * EXTERNAL FUNCTION
  */
-void suble_uart1_init(void);
-void suble_uart2_init(void);
-void suble_uart1_send(const uint8_t* buf, uint32_t size);
-void suble_uart2_send(const uint8_t* buf, uint32_t size);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //__SUBLE_UART_H__
+#endif //__SUBLE_TEMPLATE_H__

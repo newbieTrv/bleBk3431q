@@ -38,12 +38,12 @@ extern "C"
 #define TUYA_DEVICE_AUTH_KEY    "RCey3n5F2Vy9R5g7I4YgnSlzf3q9Yun2"  //32Byte
 
 #define TUYA_DEVICE_FIR_NAME    "tuya_ble_lock_common_bk3431q"      //固件标识名
-#define TUYA_DEVICE_FVER_NUM    0x00000101                          //固件版本
+#define TUYA_DEVICE_FVER_NUM    0x00000102                          //固件版本
 #define TUYA_DEVICE_HVER_NUM    0x00000100                          //硬件版本
-#define TUYA_DEVICE_FVER_STR    "1.1"                               //固件版本str
+#define TUYA_DEVICE_FVER_STR    "1.2"                               //固件版本str
 #define TUYA_DEVICE_HVER_STR    "1.0"                               //硬件版本str
 
-//Tuya_ble_锁类_蓝牙参数规范: https://docs.qq.com/sheet/DWnpET3JTaGhvQWFJ?tab=BB08J2&c=A1A0A0
+//蓝牙参数
 #define TUYA_ADV_INTERVAL       152.5                               //广播间隔, 范围: 20~10240ms, 推荐值: (152.5), (1022.5)
 #define TUYA_CONN_INTERVAL_MIN  180                                 //连接间隔, 范围: 7.5~4000ms
 #define TUYA_CONN_INTERVAL_MAX  200                                 //连接间隔, 范围: 7.5~4000ms

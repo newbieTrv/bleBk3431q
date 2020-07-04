@@ -99,8 +99,24 @@ enum appm_msg
     SUBLE_TIMER17,
     SUBLE_TIMER18,
     SUBLE_TIMER19,
+    SUBLE_TIMER100,
+    SUBLE_TIMER101,
+    SUBLE_TIMER102,
+    SUBLE_TIMER103,
+    SUBLE_TIMER104,
+    SUBLE_TIMER105,
+    SUBLE_TIMER106,
+    SUBLE_TIMER107,
+    SUBLE_TIMER108,
+    SUBLE_TIMER109,
     SUBLE_TIMER_MAX,
 };
+
+#define SUBLE_TIMERX_HANDLER(x) \
+                static int suble_timer##x##_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) { \
+                    suble_timer_handler(SUBLE_TIMER##x); \
+                    return KE_MSG_CONSUMED; \
+                }
 
 
 /*

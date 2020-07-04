@@ -62,106 +62,36 @@ static uint8_t appm_get_handler(const struct ke_state_handler *handler_list,
 /*********************************************************
 FN: 
 */
-// Timer 0
-static int suble_timer0_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER0);
-    return KE_MSG_CONSUMED;
-}
-// Timer 1
-static int suble_timer1_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER1);
-    return KE_MSG_CONSUMED;
-}
-// Timer 2
-static int suble_timer2_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER2);
-    return KE_MSG_CONSUMED;
-}
-// Timer 3
-static int suble_timer3_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER3);
-    return KE_MSG_CONSUMED;
-}
-// Timer 4
-static int suble_timer4_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER4);
-    return KE_MSG_CONSUMED;
-}
-// Timer 5
-static int suble_timer5_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER5);
-    return KE_MSG_CONSUMED;
-}
-// Timer 6
-static int suble_timer6_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER6);
-    return KE_MSG_CONSUMED;
-}
-// Timer 7
-static int suble_timer7_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER7);
-    return KE_MSG_CONSUMED;
-}
-// Timer 8
-static int suble_timer8_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER8);
-    return KE_MSG_CONSUMED;
-}
-// Timer 9
-static int suble_timer9_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER9);
-    return KE_MSG_CONSUMED;
-}
-// Timer 10
-static int suble_timer10_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER10);
-    return KE_MSG_CONSUMED;
-}
-// Timer 11
-static int suble_timer11_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER11);
-    return KE_MSG_CONSUMED;
-}
-// Timer 12
-static int suble_timer12_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER12);
-    return KE_MSG_CONSUMED;
-}
-// Timer 13
-static int suble_timer13_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER13);
-    return KE_MSG_CONSUMED;
-}
-// Timer 14
-static int suble_timer14_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER14);
-    return KE_MSG_CONSUMED;
-}
-// Timer 15
-static int suble_timer15_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER15);
-    return KE_MSG_CONSUMED;
-}
-// Timer 16
-static int suble_timer16_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER16);
-    return KE_MSG_CONSUMED;
-}
-// Timer 17
-static int suble_timer17_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER17);
-    return KE_MSG_CONSUMED;
-}
-// Timer 18
-static int suble_timer18_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER18);
-    return KE_MSG_CONSUMED;
-}
-// Timer 19
-static int suble_timer19_handler(ke_msg_id_t const msgid, void *param, ke_task_id_t const dest_id, ke_task_id_t const src_id) {
-    suble_timer_handler(SUBLE_TIMER19);
-    return KE_MSG_CONSUMED;
-}
+SUBLE_TIMERX_HANDLER(0);
+SUBLE_TIMERX_HANDLER(1);
+SUBLE_TIMERX_HANDLER(2);
+SUBLE_TIMERX_HANDLER(3);
+SUBLE_TIMERX_HANDLER(4);
+SUBLE_TIMERX_HANDLER(5);
+SUBLE_TIMERX_HANDLER(6);
+SUBLE_TIMERX_HANDLER(7);
+SUBLE_TIMERX_HANDLER(8);
+SUBLE_TIMERX_HANDLER(9);
+SUBLE_TIMERX_HANDLER(10);
+SUBLE_TIMERX_HANDLER(11);
+SUBLE_TIMERX_HANDLER(12);
+SUBLE_TIMERX_HANDLER(13);
+SUBLE_TIMERX_HANDLER(14);
+SUBLE_TIMERX_HANDLER(15);
+SUBLE_TIMERX_HANDLER(16);
+SUBLE_TIMERX_HANDLER(17);
+SUBLE_TIMERX_HANDLER(18);
+SUBLE_TIMERX_HANDLER(19);
+SUBLE_TIMERX_HANDLER(100);
+SUBLE_TIMERX_HANDLER(101);
+SUBLE_TIMERX_HANDLER(102);
+SUBLE_TIMERX_HANDLER(103);
+SUBLE_TIMERX_HANDLER(104);
+SUBLE_TIMERX_HANDLER(105);
+SUBLE_TIMERX_HANDLER(106);
+SUBLE_TIMERX_HANDLER(107);
+SUBLE_TIMERX_HANDLER(108);
+SUBLE_TIMERX_HANDLER(109);
 
 /**
  ****************************************************************************************
@@ -745,6 +675,16 @@ const struct ke_msg_handler appm_default_state[] =
     {SUBLE_TIMER17,                 (ke_msg_func_t)suble_timer17_handler},
     {SUBLE_TIMER18,                 (ke_msg_func_t)suble_timer18_handler},
     {SUBLE_TIMER19,                 (ke_msg_func_t)suble_timer19_handler},
+    {SUBLE_TIMER100,                (ke_msg_func_t)suble_timer100_handler},
+    {SUBLE_TIMER101,                (ke_msg_func_t)suble_timer101_handler},
+    {SUBLE_TIMER102,                (ke_msg_func_t)suble_timer102_handler},
+    {SUBLE_TIMER103,                (ke_msg_func_t)suble_timer103_handler},
+    {SUBLE_TIMER104,                (ke_msg_func_t)suble_timer104_handler},
+    {SUBLE_TIMER105,                (ke_msg_func_t)suble_timer105_handler},
+    {SUBLE_TIMER106,                (ke_msg_func_t)suble_timer106_handler},
+    {SUBLE_TIMER107,                (ke_msg_func_t)suble_timer107_handler},
+    {SUBLE_TIMER108,                (ke_msg_func_t)suble_timer108_handler},
+    {SUBLE_TIMER109,                (ke_msg_func_t)suble_timer109_handler},
 };
 
 /* Specifies the message handlers that are common to all states. */

@@ -1,4 +1,4 @@
-#include "suble_gpio.h"
+#include "suble_common.h"
 
 
 
@@ -160,7 +160,8 @@ static void suble_gpio_irq_handler(uint32_t pin)
         case SUBLE_IN_PIN_1: {
 //            if(suble_gpio_get_input(pin) == SUBLE_LEVEL_LOW)
             {
-                SUBLE_PRINTF("SUBLE_IN_PIN_1");
+//                SUBLE_PRINTF("SUBLE_IN_PIN_1");
+                suble_timer_start_0(SUBLE_TIMER100, 10, SUBLE_TIMER_COUNT_ENDLESS);
             }
         } break;
         
@@ -184,6 +185,35 @@ static uint32_t suble_gpio_irq_pin_change_format(uint32_t pin)
         zero_count++;
     }
     return (((zero_count/8)*0x10) + (zero_count%8));
+}
+
+
+
+
+/*********************************************************
+FN: 蜂鸣器
+*/
+void suble_buzzer_start(uint32_t freq)
+{
+#define SUBLE_BUZZER_CLOCK 16000000
+    
+	PWM_DRV_DESC pwm;
+	pwm.channel = 1;
+	pwm.mode = 0x10; //看注释
+//	pwm.pre_divid = 1; //没用到
+	pwm.end_value = SUBLE_BUZZER_CLOCK/freq; //定时时间
+	pwm.duty_cycle = SUBLE_BUZZER_CLOCK/freq/2;
+	pwm_init(&pwm);
+	
+	pwm_enable(1);
+}
+
+/*********************************************************
+FN: 
+*/
+void suble_buzzer_stop(void)
+{
+	pwm_disable(1);
 }
 
 

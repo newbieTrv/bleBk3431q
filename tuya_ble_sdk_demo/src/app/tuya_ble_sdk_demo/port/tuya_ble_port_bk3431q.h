@@ -33,8 +33,6 @@ extern "C"
 #include "hmac.h"
 #include "tuya_ble_config.h"
 #include "tuya_ble_type.h"
-#include "elog.h"
-#include "suble_common.h"
 
 /*********************************************************************
  * CONSTANT
@@ -47,6 +45,7 @@ extern "C"
     #define TUYA_BLE_HEXDUMP(...)
 #endif
 
+#include "suble_common.h"
 /*********************************************************************
  * STRUCT
  */

@@ -1,4 +1,4 @@
-#include "suble_test.h"
+#include "suble_common.h"
 
 
 
@@ -36,8 +36,7 @@ FN:
 */
 void suble_test_func(void)
 {
-//    suble_gpio_init();
-    
+//    suble_buzzer_start(1500);
 //    uint8_t tmp[300];
 //    for(int idx=0; idx<300; idx++)
 //    {

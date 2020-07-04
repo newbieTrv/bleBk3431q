@@ -16,7 +16,7 @@
 
 #include "BK3435_reg.h"
 
-#define ENABLE_PWM							0
+#define ENABLE_PWM							1
 
 #define PWM_CHANNEL_NUMBER_MAX       		5
 

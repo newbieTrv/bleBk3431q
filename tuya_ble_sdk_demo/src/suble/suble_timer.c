@@ -1,4 +1,4 @@
-#include "suble_timer.h"
+#include "suble_common.h"
 
 
 
@@ -36,8 +36,47 @@ FN: ³¬Ê±´¦Àí
 */
 void suble_timer_handler(ke_msg_id_t timer_id)
 {
-    if((timer_id >= SUBLE_TIMER0) && (timer_id < SUBLE_TIMER_MAX)) {
+    if((timer_id >= SUBLE_TIMER0) && (timer_id < SUBLE_TIMER100)) {
         suble_timer_app_handler(timer_id);
+    }
+    else {
+        switch(timer_id)
+        {
+            case SUBLE_TIMER100: {
+                suble_key_timeout_handler();
+            } break;
+            
+            case SUBLE_TIMER101: {
+                suble_battery_get_value_outtime_handler();
+            } break;
+            
+            case SUBLE_TIMER102: {
+            } break;
+            
+            case SUBLE_TIMER103: {
+            } break;
+            
+            case SUBLE_TIMER104: {
+            } break;
+            
+            case SUBLE_TIMER105: {
+            } break;
+            
+            case SUBLE_TIMER106: {
+            } break;
+            
+            case SUBLE_TIMER107: {
+            } break;
+            
+            case SUBLE_TIMER108: {
+            } break;
+            
+            case SUBLE_TIMER109: {
+            } break;
+            
+            default: {
+            } break;
+        }
     }
     suble_timer_continue(timer_id);
 }

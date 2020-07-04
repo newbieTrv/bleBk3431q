@@ -1,4 +1,4 @@
-#include "suble_util.h"
+#include "suble_common.h"
 
 
 
@@ -121,6 +121,29 @@ uint32_t suble_util_numarray2int(uint8_t *num_array, uint32_t start_idx, uint32_
 		tmp_int = (tmp_int*10) + num_array[idx];
 	}
 	return tmp_int;
+}
+
+/*********************************************************
+FN: 
+*/
+uint32_t suble_util_shell_sort(int* buf, int size)
+{
+    int i;
+    int j;
+    int temp;  
+    int gap;  //步长
+    for (gap = size / 2; gap >= 1; gap /= 2) {  // 步长初始化为数组长度的一半，每次遍历后步长减半
+        for (i = 0 + gap; i < size; i += gap) {   //对步长为gap的元素进行直插排序，当gap为1时，就是直插排序
+            temp = buf[i];  //备份a[i]的值
+            j = i - gap;  //j初始化为i的前一个元素（与i相差gap长度）
+            while (j >= 0 && buf[j] > temp) {
+                buf[j + gap] = buf[j];  //将在a[i]前且比temp的值大的元素向后移动一位
+                j -= gap;
+            }
+            buf[j + gap] = temp; 
+        }
+    }
+    return 0;
 }
 
 

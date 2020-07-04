@@ -37,6 +37,8 @@ void suble_init_func(uint8_t location)
     switch(location)
     {
         case 0: {
+//            suble_gpio_init();
+//            suble_battery_init();
         } break;
         
         case 1: {
