@@ -27,8 +27,6 @@ volatile bool g_system_sleep = false;
 
 
 
-/*********************************************************  system  *********************************************************/
-
 /*********************************************************
 FN: 
 */
@@ -46,6 +44,7 @@ void suble_init_func(uint8_t location)
         
         case 2: {
             suble_test_func();
+            suble_local_timer_start();
             tuya_ble_app_init();
             suble_adv_start();
         } break;
@@ -64,12 +63,29 @@ void suble_mainloop(void)
     suble_svc_notify_handler();
 }
 
+
+
+
 /*********************************************************
 FN: 
 */
 void suble_system_reset(void)
 {
+    TUYA_APP_LOG_DEBUG("device reset");
     platform_reset(0);
+}
+
+/*********************************************************
+FN: 
+*/
+void suble_factory_reset(void)
+{
+    sf_port_flash_erase(SF_AREA0_BASE, 2);
+    sf_port_flash_erase(SF_AREA1_BASE, 2);
+    sf_port_flash_erase(SF_AREA2_BASE, 2);
+    sf_port_flash_erase(SF_AREA3_BASE, 2);
+    sf_port_flash_erase(SF_AREA4_BASE, 2);
+    suble_flash_init();
 }
 
 /*********************************************************
@@ -94,8 +110,6 @@ void suble_exit_critical(void)
 
 
 
-
-/*********************************************************  log  *********************************************************/
 
 /*********************************************************
 FN: 

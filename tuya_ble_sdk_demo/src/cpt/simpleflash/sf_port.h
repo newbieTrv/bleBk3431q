@@ -39,11 +39,11 @@ extern "C"
 #define SF_WRITE_MIN_SIZE   (0x04)
 #define SF_ERASE_MIN_SIZE   (0x1000)
 
-#define SF_AREA0_BASE       (0x6A000)
-#define SF_AREA1_BASE       (0x6C000) //lock_hard
-#define SF_AREA2_BASE       (0x6E000) //lock_event
-#define SF_AREA3_BASE       (0x70000) //offline_password
-#define SF_AREA4_BASE       (0x72000)
+#define SF_AREA0_BASE       (0x68000)
+#define SF_AREA1_BASE       (0x6A000)
+#define SF_AREA2_BASE       (0x6C000)
+#define SF_AREA3_BASE       (0x6E000)
+#define SF_AREA4_BASE       (0x70000)
 #define SF_AREA_SIZE        (2*SF_ERASE_MIN_SIZE)  //min = 2*SF_ERASE_MIN_SIZE
 
 enum

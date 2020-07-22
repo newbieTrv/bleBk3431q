@@ -446,7 +446,7 @@ typedef enum {
  *@note 
  * */
 typedef enum{
-    UNBONDING_UNCONN = 0,   
+    UNBONDING_UNCONN = 0,
     UNBONDING_CONN,
     BONDING_UNCONN,
     BONDING_CONN,

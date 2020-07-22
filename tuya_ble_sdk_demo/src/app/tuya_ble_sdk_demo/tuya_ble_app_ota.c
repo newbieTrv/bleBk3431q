@@ -14,8 +14,8 @@
 /*********************************************************************
  * LOCAL VARIABLES
  */
-static volatile uint8_t  s_ota_state = TUYA_BLE_OTA_REQ;
-static volatile int32_t  s_pkg_id;
+static volatile uint8_t s_ota_state = TUYA_BLE_OTA_REQ;
+static volatile int32_t s_pkg_id;
 static uint32_t s_data_len;
 static uint32_t s_data_crc;
 static volatile bool s_ota_success = false;
@@ -29,7 +29,6 @@ static app_ota_file_info_storage_t s_old_file;
 static uint32_t app_ota_enter(void);
 static uint32_t app_ota_exit(void);
 static uint32_t app_ota_get_crc32_in_flash(uint32_t len);
-//static void app_ota_setting_write_complete_cb(nrf_fstorage_evt_t* p_evt);
 static uint32_t app_ota_req_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
 static uint32_t app_ota_file_info_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
 static uint32_t app_ota_file_offset_handler(uint8_t* cmd, uint16_t cmd_size, tuya_ble_ota_response_t* rsp);
@@ -47,7 +46,7 @@ static void app_ota_timer_creat_and_start(void);
 /*********************************************************
 FN: 
 */
-uint32_t app_ota_init(void)
+uint32_t tuya_ble_app_ota_init(void)
 {
     return 0;
 }
@@ -55,7 +54,7 @@ uint32_t app_ota_init(void)
 /*********************************************************
 FN: 
 */
-void app_ota_handler(tuya_ble_ota_data_t* ota)
+void tuya_ble_app_ota_handler(tuya_ble_ota_data_t* ota)
 {
     tuya_ble_ota_response_t rsp;
     rsp.type = ota->type;
@@ -109,11 +108,8 @@ static uint32_t app_ota_enter(void)
     memset(&s_old_file, 0x00, sizeof(app_ota_file_info_storage_t));
     
     suble_gap_conn_param_update(15, 30, 0, 5000);
-//    app_port_ble_conn_evt_ext();
     
-    tuya_ble_device_enter_critical();
     suble_flash_erase(APP_OTA_START_ADDR, APP_OTA_FILE_MAX_LEN/0x1000);
-    tuya_ble_device_exit_critical();
     
     return SUBLE_SUCCESS;
 }
@@ -131,7 +127,7 @@ static uint32_t app_ota_exit(void)
 /*********************************************************
 FN: 
 */
-uint32_t app_ota_get_ota_state(void)
+uint32_t tuya_ble_app_ota_get_ota_state(void)
 {
     return s_ota_state;
 }
@@ -139,7 +135,7 @@ uint32_t app_ota_get_ota_state(void)
 /*********************************************************
 FN: 
 */
-uint32_t app_ota_disconn_handler(void)
+uint32_t tuya_ble_app_ota_disconn_handler(void)
 {
     if(s_ota_state > TUYA_BLE_OTA_REQ) {
         return app_ota_exit();
@@ -535,15 +531,14 @@ tuya_ble_timer_t app_ota_timer;
 static void reset_with_disconn_outtime_cb(tuya_ble_timer_t timer)
 {
     suble_gap_disconnect(0, 0x16);
+    suble_delay_ms(1000);
     suble_system_reset();
 }
 
-
 static void app_ota_timer_creat_and_start(void)
 {
-    tuya_ble_timer_create(&app_ota_timer, 2000, TUYA_BLE_TIMER_SINGLE_SHOT, reset_with_disconn_outtime_cb);
+    tuya_ble_timer_create(&app_ota_timer, 1000, TUYA_BLE_TIMER_SINGLE_SHOT, reset_with_disconn_outtime_cb);
     tuya_ble_timer_start(app_ota_timer);
-    
 }
 
 

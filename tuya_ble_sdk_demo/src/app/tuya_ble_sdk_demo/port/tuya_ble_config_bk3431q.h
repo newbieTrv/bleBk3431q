@@ -86,7 +86,7 @@ extern "C"
 /*
  * if 1 ,ble sdk will update mac address with with the address of the authorization information.
  */ 
-#define  TUYA_BLE_DEVICE_MAC_UPDATE         1
+#define  TUYA_BLE_DEVICE_MAC_UPDATE         0
  
 /*
  * if 1 ,after update mac will reset.

@@ -47,14 +47,14 @@ void suble_battery_sample_start(void)
     memset(s_adc_value, 0x00, BATTERY_SAMPLE_TIME);
     s_adc_value_sum = 0;
     
-    suble_timer_start_0(SUBLE_TIMER101, 97, SUBLE_TIMER_COUNT_ENDLESS);
+    suble_timer_start_0(SUBLE_TIMER_BATTERY_SAMPLE_TIMEOUT, 97, SUBLE_TIMER_COUNT_ENDLESS);
     SUBLE_PRINTF("suble_battery_sample_start");
 }
 
 /*********************************************************
 FN: 
 */
-void suble_battery_get_value_outtime_handler(void)
+void suble_battery_sample_outtime_handler(void)
 {
     if(s_sample_idx < BATTERY_SAMPLE_TIME) {
         s_adc_value[s_sample_idx] = adc_get_value();
@@ -85,7 +85,7 @@ void suble_battery_get_value_outtime_handler(void)
         //ÉÏ±¨
         SUBLE_PRINTF("battery_percent_report: %d", percent);
         
-        suble_timer_stop_0(SUBLE_TIMER101);
+        suble_timer_stop_0(SUBLE_TIMER_BATTERY_SAMPLE_TIMEOUT);
     }
     s_sample_idx++;
 /*

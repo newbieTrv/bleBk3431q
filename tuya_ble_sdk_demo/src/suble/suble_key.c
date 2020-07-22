@@ -170,7 +170,7 @@ void suble_key_timeout_handler(void)
         key_count = 0;
         key_pressed = true;
         key_state = KEY_STATE_READY;
-        suble_timer_stop_0(SUBLE_TIMER100);
+        suble_timer_stop_0(SUBLE_TIMER_KEY_TIMEOUT);
     }
 }
 

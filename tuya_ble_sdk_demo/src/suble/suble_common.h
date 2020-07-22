@@ -46,6 +46,7 @@ extern "C"
 #include "pwm.h"
 #include "rtc.h"
 #include "adc.h"
+#include "wdt.h"
 #include "rf.h"
 
 //cpt
@@ -137,6 +138,11 @@ typedef enum {
     SUBLE_TIMER_SINGLE_SHOT,
     SUBLE_TIMER_REPEATED,
 } suble_timer_mode_t;
+
+#define SUBLE_TIMER_KEY_TIMEOUT                SUBLE_TIMER100
+#define SUBLE_TIMER_BATTERY_SAMPLE_TIMEOUT     SUBLE_TIMER101
+#define SUBLE_TIMER_APP_TEST_TIMEOUT           SUBLE_TIMER102
+#define SUBLE_TIMER_APP_TEST_RESET_TIMEOUT     SUBLE_TIMER103
 
 /* suble_key
  **************************************************/
@@ -281,14 +287,15 @@ extern volatile bool g_adv_restart_glag;
 void suble_init_func(uint8_t location);
 void suble_mainloop(void);
 
+void suble_system_reset(void);
+void suble_factory_reset(void);
+void suble_enter_critical(void);
+void suble_exit_critical(void);
+
 void suble_log_init(void);
 void suble_log_hexdump(const char *name, uint8_t *buf, uint16_t size);
 void suble_log_hexdump_for_tuya_ble_sdk(const char *name, uint8_t width, uint8_t *buf, uint16_t size);
 void suble_log_hexdump_empty(const char *name, uint8_t width, uint8_t *buf, uint16_t size);
-
-void suble_system_reset(void);
-void suble_enter_critical(void);
-void suble_exit_critical(void);
 
 /* suble_scan_adv
  **************************************************/
@@ -378,7 +385,7 @@ void suble_key_timeout_handler(void);
  **************************************************/
 void suble_battery_init(void);
 void suble_battery_sample_start(void);
-void suble_battery_get_value_outtime_handler(void);
+void suble_battery_sample_outtime_handler(void);
 
 /* suble_util
  **************************************************/

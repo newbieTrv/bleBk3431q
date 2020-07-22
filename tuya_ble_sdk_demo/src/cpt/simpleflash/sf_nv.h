@@ -37,6 +37,13 @@ typedef enum {
     SF_ERROR_NOT_FOUND,
 } sf_status_t;
 
+//SF_AREA_0
+enum {
+    NV_ID_APP_TEST_HID_STR = 0xFF00,
+    NV_ID_APP_TEST_MAC_STR,
+    NV_ID_APP_TEST_NV_IF_AUTH,
+};
+
 /*********************************************************************
  * STRUCT
  */

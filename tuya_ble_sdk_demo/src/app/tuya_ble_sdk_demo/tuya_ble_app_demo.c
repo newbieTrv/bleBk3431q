@@ -14,6 +14,7 @@
 #include "tuya_ble_event.h"
 #include "tuya_ble_log.h"
 #include "tuya_ble_app_ota.h"
+#include "tuya_ble_app_test.h"
 
 
 
@@ -63,6 +64,10 @@ FN:
 */
 void tuya_ble_app_init(void)
 {
+    suble_flash_init();
+    
+    tuya_ble_app_test_init();
+    
     //tuya_ble_sdk init
     memcpy(tuya_ble_device_param.product_id, TUYA_DEVICE_PID, 8);
     memcpy(tuya_ble_device_param.device_id,  device_id_test,  DEVICE_ID_LEN);
@@ -72,7 +77,7 @@ void tuya_ble_app_init(void)
     //register tuya_ble_sdk callback
     tuya_ble_callback_queue_register(tuya_ble_sdk_callback);
     
-    app_ota_init();
+    tuya_ble_app_ota_init();
 }
 
 /*********************************************************
@@ -127,7 +132,7 @@ static void tuya_ble_sdk_callback(tuya_ble_cb_evt_param_t* event)
         } break;
         
         case TUYA_BLE_CB_EVT_OTA_DATA: {
-            app_ota_handler(&event->ota_data);
+            tuya_ble_app_ota_handler(&event->ota_data);
         } break;
         
         case TUYA_BLE_CB_EVT_TIME_STAMP: {
@@ -154,7 +159,7 @@ static void tuya_ble_app_data_process(int32_t evt_id, void *data)
     {
         case APP_EVT_CONNECTED: {
             tuya_ble_connected_handler();
-            app_ota_disconn_handler();
+            tuya_ble_app_ota_disconn_handler();
         } break;
         
         case APP_EVT_DISCONNECTED: {

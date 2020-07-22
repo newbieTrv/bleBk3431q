@@ -39,6 +39,7 @@
 #include "tuya_ble_app_production_test.h"
 #include "tuya_ble_log.h"
 #include "tuya_ble_api.h"
+#include "tuya_ble_app_test.h"
 
 
 #if defined(CUSTOMIZED_TUYA_BLE_APP_PRODUCT_TEST_HEADER_FILE)
@@ -613,73 +614,74 @@ __TUYA_BLE_WEAK void tuya_ble_custom_app_production_test_process(uint8_t channel
 extern void tuya_ble_connect_monitor_timer_stop(void);
 void tuya_ble_app_production_test_process(uint8_t channel,uint8_t *p_in_data,uint16_t in_len)
 {
-    uint8_t cmd = p_in_data[3];
-    uint16_t data_len = (p_in_data[4]<<8) + p_in_data[5];
-    uint8_t *data_buffer = p_in_data+6;
-   /* 
-    if(tuya_ble_current_para.sys_settings.factory_test_flag==0) //
-    {
-        TUYA_BLE_LOG_WARNING("The production interface is closed!");
-        return;
-    }
-    */
-    if((channel!=0)&&(cmd!=TUYA_BLE_AUC_CMD_EXTEND))
-    {
-        TUYA_BLE_LOG_ERROR("The authorization instructions are not supported in non-serial channels!");
-        return;
-    }
-    if((channel==1)&&(cmd==TUYA_BLE_AUC_CMD_EXTEND))
-    {
-        if(tuya_ble_production_test_with_ble_flag==0)
-        {
-            tuya_ble_production_test_with_ble_flag = 1;
-            if(tuya_ble_connect_status_get()!=BONDING_CONN)
-            {
-                tuya_ble_connect_monitor_timer_stop();
-            }
-        }
-        
-    }
-    switch(cmd)
-    {
-        case TUYA_BLE_AUC_CMD_EXTEND:
-            tuya_ble_custom_app_production_test_process(channel,p_in_data,in_len);
-            break;
-        case TUYA_BLE_AUC_CMD_ENTER:
-            tuya_ble_auc_enter(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_QUERY_HID:
-            tuya_ble_auc_query_hid(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_GPIO_TEST:
-            tuya_ble_auc_gpio_test(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_WRITE_AUTH_INFO:
-            tuya_ble_device_factory_reset();
-            tuya_ble_auc_write_auth_info(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_QUERY_INFO:
-            tuya_ble_auc_query_info(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_RESET:
-            tuya_ble_auc_reset(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_QUERY_FINGERPRINT:
-            tuya_ble_auc_query_fingerprint(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_WRITE_HID:
-            tuya_ble_auc_write_hid(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_RSSI_TEST:
-            tuya_ble_auc_rssi_test(data_buffer,data_len);
-            break;
-        case TUYA_BLE_AUC_CMD_WRITE_OEM_INFO:
-            
-            break;
-                
-        default:
-            break;
-    };
+    factory_test_process(p_in_data, in_len, NULL, NULL);
+//    uint8_t cmd = p_in_data[3];
+//    uint16_t data_len = (p_in_data[4]<<8) + p_in_data[5];
+//    uint8_t *data_buffer = p_in_data+6;
+//   /* 
+//    if(tuya_ble_current_para.sys_settings.factory_test_flag==0) //
+//    {
+//        TUYA_BLE_LOG_WARNING("The production interface is closed!");
+//        return;
+//    }
+//    */
+//    if((channel!=0)&&(cmd!=TUYA_BLE_AUC_CMD_EXTEND))
+//    {
+//        TUYA_BLE_LOG_ERROR("The authorization instructions are not supported in non-serial channels!");
+//        return;
+//    }
+//    if((channel==1)&&(cmd==TUYA_BLE_AUC_CMD_EXTEND))
+//    {
+//        if(tuya_ble_production_test_with_ble_flag==0)
+//        {
+//            tuya_ble_production_test_with_ble_flag = 1;
+//            if(tuya_ble_connect_status_get()!=BONDING_CONN)
+//            {
+//                tuya_ble_connect_monitor_timer_stop();
+//            }
+//        }
+//        
+//    }
+//    switch(cmd)
+//    {
+//        case TUYA_BLE_AUC_CMD_EXTEND:
+//            tuya_ble_custom_app_production_test_process(channel,p_in_data,in_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_ENTER:
+//            tuya_ble_auc_enter(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_QUERY_HID:
+//            tuya_ble_auc_query_hid(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_GPIO_TEST:
+//            tuya_ble_auc_gpio_test(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_WRITE_AUTH_INFO:
+//            tuya_ble_device_factory_reset();
+//            tuya_ble_auc_write_auth_info(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_QUERY_INFO:
+//            tuya_ble_auc_query_info(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_RESET:
+//            tuya_ble_auc_reset(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_QUERY_FINGERPRINT:
+//            tuya_ble_auc_query_fingerprint(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_WRITE_HID:
+//            tuya_ble_auc_write_hid(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_RSSI_TEST:
+//            tuya_ble_auc_rssi_test(data_buffer,data_len);
+//            break;
+//        case TUYA_BLE_AUC_CMD_WRITE_OEM_INFO:
+//            
+//            break;
+//                
+//        default:
+//            break;
+//    };
     
         
 }

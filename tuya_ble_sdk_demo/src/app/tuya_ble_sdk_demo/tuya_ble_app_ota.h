@@ -107,10 +107,10 @@ typedef struct{
 /*********************************************************************
  * EXTERNAL FUNCTIONS
  */
-uint32_t app_ota_init(void);
-void app_ota_handler(tuya_ble_ota_data_t* ota);
-uint32_t app_ota_get_ota_state(void);
-uint32_t app_ota_disconn_handler(void);
+uint32_t tuya_ble_app_ota_init(void);
+void tuya_ble_app_ota_handler(tuya_ble_ota_data_t* ota);
+uint32_t tuya_ble_app_ota_get_ota_state(void);
+uint32_t tuya_ble_app_ota_disconn_handler(void);
 
 
 #ifdef __cplusplus

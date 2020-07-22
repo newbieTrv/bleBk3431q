@@ -161,7 +161,7 @@ static void suble_gpio_irq_handler(uint32_t pin)
 //            if(suble_gpio_get_input(pin) == SUBLE_LEVEL_LOW)
             {
 //                SUBLE_PRINTF("SUBLE_IN_PIN_1");
-                suble_timer_start_0(SUBLE_TIMER100, 10, SUBLE_TIMER_COUNT_ENDLESS);
+                suble_timer_start_0(SUBLE_TIMER_KEY_TIMEOUT, 10, SUBLE_TIMER_COUNT_ENDLESS);
             }
         } break;
         
