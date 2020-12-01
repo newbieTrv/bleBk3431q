@@ -32,12 +32,12 @@ extern "C"
 /*********************************************************  tuya  *********************************************************/
 //PID-product id-产品id
 //DID-device id -设备id（云端称作uuid）
-#define TUYA_DEVICE_PID         "suq5jmo5"
-#define TUYA_DEVICE_MAC         "DC234D08C8E9"
-#define TUYA_DEVICE_DID         "tuya0e56b075be13"                  //16Byte
-#define TUYA_DEVICE_AUTH_KEY    "RCey3n5F2Vy9R5g7I4YgnSlzf3q9Yun2"  //32Byte
+#define TUYA_DEVICE_PID         "ujzporqr"
+#define TUYA_DEVICE_MAC         "DC234D1C41AE"
+#define TUYA_DEVICE_DID         "tuyac0913bc8172f"                  //16Byte
+#define TUYA_DEVICE_AUTH_KEY    "UBAGZAqtAxTsyAEIKA1EVrN90Y9eZGkt"  //32Byte
 
-#define TUYA_DEVICE_FIR_NAME    "tuya_ble_lock_common_bk3431q"      //固件标识名
+#define TUYA_DEVICE_FIR_NAME    "KF_ble_CaWindow_bk3431q"      //固件标识名
 #define TUYA_DEVICE_FVER_NUM    0x00000104                          //固件版本
 #define TUYA_DEVICE_HVER_NUM    0x00000100                          //硬件版本
 #define TUYA_DEVICE_FVER_STR    "1.4"                               //固件版本str
